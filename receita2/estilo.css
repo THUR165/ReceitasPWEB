@@ -1,0 +1,61 @@
+body {
+   font-family: "Georgia", serif;
+   text-align: center;
+   background-color: #f9f9f9;
+   margin: 40px;
+}
+
+.verso {
+   font-size: 18px;
+   line-height: 1.6;
+   color: #333;
+}
+
+.mote {
+   font-size: 18px;
+   line-height: 1.6;
+   color: red;
+   font-weight: bold;
+}
+
+.link-poeta {
+   color: blue;
+   text-decoration: none;
+   font-weight: bold;
+}
+
+.link-poeta:hover {
+   color: darkred;
+   text-decoration: underline;
+}
+
+.link-poeta:visited {
+   color: purple;
+}
+
+
+img {
+   border-radius: 50%;
+}
+
+.poeta img {
+   border-radius: 50%;
+   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+table {
+   border-collapse: collapse;
+   margin: 20px auto;
+   width: 50%;
+}
+
+th, td {
+   border: 1px solid #ccc;
+   padding: 10px;
+   text-align: center;
+}
+
+th {
+   background-color: #f2f2f2;
+   color: #333;
+}

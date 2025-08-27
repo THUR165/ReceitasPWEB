@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cervejas Interativas</title>
+  <style>
+    /* Estilo geral */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+
+    /* Estilo para cada div de cerveja */
+    .cerveja-div {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #f2c94c;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Estilo da tabela */
+    table {
+      width: 50%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="botoes">
+    <button id="btnDivs">Mostrar Cervejas em Divs</button>
+    <button id="btnTabela">Mostrar Cervejas em Tabela</button>
+    <button id="btnOrdenar">Ordenar Cervejas</button>
+    <button id="btnEmbaralhar">Embaralhar Cervejas</button>
+  </div>
+
+  <div id="meu_amor"></div>
+
+  <script>
+    let cervejas = ["Guiness", "Desperados", "Becks"];
+
+    const container = document.getElementById("meu_amor");
+
+    // Função para exibir como divs
+    function mostrarDivs(array) {
+      container.innerHTML = array.map(c => `<div class="cerveja-div">${c}</div>`).join("\n");
+    }
+
+    // Função para exibir como tabela
+    function mostrarTabela(array) {
+      let html = `<table><tr><th>Cerveja</th></tr>`;
+      html += array.map(c => `<tr><td>${c}</td></tr>`).join("\n");
+      html += `</table>`;
+      container.innerHTML = html;
+    }
+
+    // Ordenar cervejas (alfabética)
+    function ordenarCervejas() {
+      let cervejasOrdenadas = [...cervejas].sort(); // não altera o array original
+      mostrarTabela(cervejasOrdenadas);
+    }
+
+    // Embaralhar cervejas (usando sort com função aleatória)
+    function embaralharCervejas() {
+      let cervejasEmbaralhadas = [...cervejas].sort(() => Math.random() - 0.5);
+      mostrarTabela(cervejasEmbaralhadas);
+    }
+
+    // Botões
+    document.getElementById("btnDivs").addEventListener("click", () => mostrarDivs(cervejas));
+    document.getElementById("btnTabela").addEventListener("click", () => mostrarTabela(cervejas));
+    document.getElementById("btnOrdenar").addEventListener("click", ordenarCervejas);
+    document.getElementById("btnEmbaralhar").addEventListener("click", embaralharCervejas);
+
+  </script>
+</body>
+</html>

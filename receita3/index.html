@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+
+</head>
+<body>
+
+  <div id="botaoDiv">
+    <button id="Mostrar">Mostrar/Esconder Cerveja</button>
+  </div>
+
+  <div id="container"></div>
+
+  <script>
+    const btn = document.getElementById("Mostrar");
+    const container = document.getElementById("container");
+
+    let mostrando = false;
+
+    btn.addEventListener("click", () => {
+      if (!mostrando) {
+        container.textContent = "Guiness";
+        container.classList.add("show");
+        mostrando = true;
+      } else {
+        container.classList.remove("show");
+        setTimeout(() => {
+          container.textContent = "";
+        }, 800);
+        mostrando = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
