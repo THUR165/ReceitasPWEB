@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cervejas - Exercícios</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; text-align: center; }
+    table { width: 90%; max-width: 700px; margin: 10px auto; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #f2f2f2; }
+    tr:nth-child(even) { background: #fafafa; }
+    .small { font-size: 0.9em; color:#555; }
+  </style>
+</head>
+<body>
+
+  <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+  <div id="cervejasDiv"></div>
+
+  <script>
+    let cervejas = [
+      { name: "Guiness",    alcohol: "10%", style: "Imperial Stout", ibu: "60" },
+      { name: "Desperados", alcohol: "6%",  style: "Lager",          ibu: "18" },
+      { name: "Becks",      alcohol: "5%",  style: "Pilsen",         ibu: "20" }
+    ];
+
+    const defaultProps   = ["name", "alcohol", "style", "ibu"];
+    const defaultHeaders = ["Nome", "Álcool", "Estilo", "Amargor"];
+
+    const carregarDiv = (cs, targetId = "cervejasDiv", headers = defaultHeaders, props = defaultProps) => {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+      if (!Array.isArray(cs)) {
+        target.innerHTML = "<p>Fonte inválida: não é um array</p>";
+        return;
+      }
+
+      const cols = headers.length;
+      const thead = `<tr>${headers.map(h => `<th>${h}</th>`).join("")}</tr>`;
+
+      const tbody = cs.map(obj => {
+        const cells = [];
+        for (let i = 0; i < cols; i++) {
+          const prop = props[i];
+          let val = "";
+          if (prop && Object.prototype.hasOwnProperty.call(obj, prop)) {
+            val = obj[prop];
+          }
+          cells.push(`<td>${val}</td>`);
+        }
+        return `<tr>${cells.join("")}</tr>`;
+      }).join("");
+
+      target.innerHTML = `<table>${thead}${tbody}</table>`;
+    };
+
+    const botao = document.getElementById("botaoCarregar");
+    botao.addEventListener("click", () => carregarDiv(cervejas) );
+  </script>
+
+</body>
+</html>

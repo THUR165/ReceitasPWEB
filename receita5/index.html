@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Roupas</title>
+</head>
+<body>
+
+   <a href="#" id="linkDivs">Mostrar como divs</a> |
+   <a href="#" id="linkTabela">Mostrar como tabela</a> |
+   <a href="#" id="linkOrdenar">Ordenar</a> |
+   <a href="#" id="linkEmbaralhar">Embaralhar</a>
+
+   <div id="conteudo"></div>
+
+   <script>
+      let roupas = ["Camisa", "Calça", "Sapato", "Jaqueta", "Chapéu"];
+
+      const carregarDiv = (cervs) => {
+         let div = document.getElementById("conteudo");
+         let html = cervs.map(item => `<div>${item}</div>`).join("");
+         div.innerHTML = html;
+      };
+
+      const mostrarTabela = (cervs) => {
+         let div = document.getElementById("conteudo");
+         let linhas = cervs.map(item => `<tr><td>${item}</td></tr>`).join("");
+         div.innerHTML = `<table border="1">${linhas}</table>`;
+      };
+
+      const ordenarRoupas = () => carregarDiv([...roupas].sort());
+
+      const embaralharRoupas = () => {
+         let copia = [...roupas];
+         copia.sort(() => Math.random() - 0.5);
+         carregarDiv(copia);
+      };
+
+      document.getElementById("linkDivs").addEventListener("click", () => carregarDiv(roupas));
+      document.getElementById("linkTabela").addEventListener("click", () => mostrarTabela(roupas));
+      document.getElementById("linkOrdenar").addEventListener("click", ordenarRoupas);
+      document.getElementById("linkEmbaralhar").addEventListener("click", embaralharRoupas);
+   </script>
+
+</body>
+</html>
